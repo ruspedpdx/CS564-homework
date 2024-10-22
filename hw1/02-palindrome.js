@@ -1,24 +1,28 @@
 const elem = document.querySelector("input");
 const log = document.getElementById("result");
 
-elem.addEventListener("input", handleInput);
+const handleInput = () => {
+  const value = elem.value;
 
-function handleInput(e) {
-  try {
-    const value = elem.value;
-    if (!isNaN(value) && Number(value) < 0) {
-      throw new Error("Please enter a positive number.");
-    }
+  // Convert input to a number
+  const numberValue = Number(value);
 
-    if (value.length > 0 && value === value.split("").reverse().join("")) {
+  // Check if the value is positive
+  if (numberValue < 0) {
+    log.textContent = "Please enter a positive number.";
+    log.style.color = "#8B0000";
+  }
+
+  // Check if the input is a palindrome
+  else if (value.length > 0) {
+    if (value === value.split("").reverse().join("")) {
       log.textContent = "Yes. This is a palindrome!";
       log.style.color = "#06402B";
     } else {
       log.textContent = "No. Try again.";
       log.style.color = "#8B0000";
     }
-  } catch (error) {
-    log.textContent = `Error: ${error.message}`;
-    console.error("Error occurred while checking palindrome:", error);
   }
-}
+};
+
+elem.addEventListener("input", handleInput);
