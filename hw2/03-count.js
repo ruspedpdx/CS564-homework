@@ -5,13 +5,13 @@ const handleKeyDown = () => {
   const countText = highLighted.textContent;
   const searchText = userInput.value.trim();
 
-  // Exit if search text is empty
+  // Do nothing if search text is empty
   if (searchText === "") {
     highLighted.innerHTML = countText;
     return;
   }
 
-  // Create regex to match the input, case insensitive
+  // Create regex with boundaries to match the input
   const re = new RegExp(`\\b(${searchText})\\b`, "gi");
 
   // Replace matched words with <mark> wrapped text
@@ -21,5 +21,4 @@ const handleKeyDown = () => {
   highLighted.innerHTML = highLightedText;
 };
 
-// Add event listener to userInput
 userInput.addEventListener("keydown", handleKeyDown);
