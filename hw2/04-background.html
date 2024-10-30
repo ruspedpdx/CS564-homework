@@ -10,29 +10,27 @@
     />
     <script defer src="04-background.js"></script>
   </head>
-  <body class="container bg-light">
+  <body>
     <main class="d-flex flex-column align-items-center">
-      <section class="instructions text-bg-primary mb-3 mt-6">
-        <div class="mb-3 mt-6">
+      <section class="justify-content-center text-bg-primary mb-3 mt-6">
+        <div class="container col-md-8 bg-light mb-3 mt-6">
           <h1>Exercise 04 - Background</h1>
-          <hr />
-          <p class="col-md-8">
+          <p class="align-items-center">
             The background color will change every few seconds (as indicated
             below). You can stop this behavior and you can also change how often
             the background color changes.
           </p>
-          <div class="change-interval mb-3 mt-6">
+          <div class="d-flex flex-column col-md-4 mb-3 mt-6">
             <label for="userInput"
-              >Background change interval (seconds):
+              >Background change interval (in seconds):
             </label>
             <input type="number" class="user-input" id="userInput" />
           </div>
-            <input
-              type="button"
-              class="btn start-button btn-primary mt-6 margin-left"
-              value="Start color cycle"
-            />
-          </div>
+          <input
+            type="button"
+            class="start-button btn btn-primary margin-left mb-3"
+            value="Start"
+          />
         </div>
       </section>
     </main>
