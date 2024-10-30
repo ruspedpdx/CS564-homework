@@ -7,17 +7,23 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
-    <script defer src="02-data.js"></script>
+      <link
+      rel="stylesheet"
+      href="02-search.css" />
+      <script defer src="02-data.js"></script>
     <script defer src="02-search.js"></script>
   </head>
-  <body>
-    <main>
+  <body class="container bg-light">
+    <main class="d-flex flex-column align-items-center">
+      <section class="text-bg-primary mb-3"></section>
       <h1>Exercise 02 - Search</h1>
-      <div>
-        <label for="userInput">Search: </label>
-        <input type="text" id="userInput" />
-        <input type="button" value="Search Character: " />
+      <div class="search">
+        <label for="userInput">Search input: </label>
+        <input type="text" class="user-input" id="userInput" />
+        <input class="search-button" type="button" value="Search" />
       </div>
+      <div class="container results-container mt-6 d-flex justify-content-center"></div>
+    </section>
     </main>
   </body>
 </html>

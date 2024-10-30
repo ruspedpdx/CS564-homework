@@ -1,0 +1,26 @@
+.search {
+  padding: 15px;
+  border: 1px solid #007acc;
+  background-color: #a6c3cd;
+  border-radius: 8px;
+  margin: 15px;
+  text-align: left;
+}
+
+.card {
+  padding: 15px;
+  border: 1px solid #007acc;
+  background-color: #e0f7ff;
+  border-radius: 8px;
+  margin: 10px;
+  text-align: left;
+}
+
+.error-card {
+  padding: 15px;
+  border: 1px solid #d00a42;
+  background-color: #f1e1e1;
+  border-radius: 8px;
+  margin: 10px;
+  text-align: center;
+}
