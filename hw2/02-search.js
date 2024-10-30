@@ -2,7 +2,7 @@ const userInput = document.querySelector(".user-input");
 const searchButton = document.querySelector(".search-button");
 const resultsContainer = document.querySelector(".results-container");
 
-// Search and Display Function
+// handleClick Function
 const handleClick = function handleClick() {
   const query = userInput.value.toLowerCase();
   resultsContainer.innerHTML = ""; // Clear previous results
@@ -39,5 +39,4 @@ const handleClick = function handleClick() {
   });
 };
 
-// Add event listener
 searchButton.addEventListener("click", handleClick);

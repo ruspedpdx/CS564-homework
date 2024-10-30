@@ -1,0 +1,21 @@
+.search {
+  padding: 15px;
+  border: 1px solid #007acc;
+  background-color: #a6c3cd;
+  border-radius: 8px;
+  margin: 15px;
+  text-align: left;
+}
+
+.counted {
+  padding: 15px;
+  border: 1px solid #007acc;
+  border-radius: 8px;
+  margin: 15px;
+  text-align: left;
+}
+
+mark {
+  background-color: #ffff00;
+  color: #00008b;
+}
