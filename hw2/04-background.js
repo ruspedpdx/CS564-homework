@@ -29,9 +29,13 @@ const handleClick = function () {
     clearInterval(intervalId); // Stop interval
     intervalId = null;
     startButton.value = "Start"; // Update button text
+    startButton.classList.remove("btn-danger"); // Update button style
+    startButton.classList.add("btn-primary"); // Update button style
   } else {
     intervalId = setInterval(changeBackground, intervalTime); // Start interval
     startButton.value = "Stop"; // Update button text
+    startButton.classList.remove("btn-primary"); // Update button style
+    startButton.classList.add("btn-danger"); // Update button style
   }
 };
 

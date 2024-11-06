@@ -3,7 +3,10 @@ const highLighted = document.querySelector(".counted");
 
 const handleKeyDown = () => {
   const countText = highLighted.textContent;
-  const searchText = userInput.value.trim();
+  let searchText = userInput.value;
+
+  // Remove spaces from the input
+  searchText = searchText.replace(/\s+/g, "");
 
   // Do nothing if search text is empty
   if (searchText === "") {
@@ -11,14 +14,17 @@ const handleKeyDown = () => {
     return;
   }
 
-  // Create regex with boundaries to match the input
+  // Create regex to match whole words
   const re = new RegExp(`\\b(${searchText})\\b`, "gi");
 
   // Replace matched words with <mark> wrapped text
-  const highLightedText = countText.replace(re, "<mark>$1</mark>");
+  const highLightedText = countText.replace(
+    re,
+    '<mark style="background-color: #ffff00; color: #00008b;">$1</mark>'
+  );
 
   // Update the HTML content with highlighted text
   highLighted.innerHTML = highLightedText;
 };
 
-userInput.addEventListener("keydown", handleKeyDown);
+userInput.addEventListener("input", handleKeyDown);

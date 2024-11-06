@@ -13,7 +13,6 @@ const handleClick = function handleClick() {
     errorCard.classList.add("error-card");
     errorCard.innerHTML = `
       <p>Please enter a name to search.</p>
-      <p>Partial names are acceptable.</p>
       `;
     resultsContainer.appendChild(errorCard);
     return;
@@ -21,21 +20,40 @@ const handleClick = function handleClick() {
 
   // Filter matching on partial strings
   const results = characters.filter((item) =>
-    item.name.toLowerCase().includes(query)
+    item.name.toLowerCase().includes(query.toLowerCase())
   );
 
   // Display results in separate cards
-  results.forEach((result) => {
+  resultsContainer.innerHTML = ""; // Clear previous results
+
+  results.forEach((result, index) => {
+    // Create a new row every 3 cards
+    if (index % 3 === 0) {
+      row = document.createElement("div");
+      row.classList.add("row");
+      row.style.padding = "auto";
+      resultsContainer.appendChild(row);
+    }
+
+    // Create the card
     const card = document.createElement("div");
-    card.classList.add("card");
-    card.classList.add("col-md-4");
-    card.classList.add("justify-content-center");
-    card.innerHTML = `
-      <h2>${result.name}</h2>
-      <p>height: ${result.height}</p>
-      <p>birth year: ${result.birth_year}</p>
-    `;
-    resultsContainer.appendChild(card);
+    card.classList.add(
+      "card",
+      "col-sm-4",
+      "mb-3",
+      "margin-left",
+      "justify-content-between"
+    );
+
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+    cardBody.innerHTML = `
+    <h2 class="card-title">${result.name}</h2>
+    <p class="card-text">Birth year: ${result.birth_year}</p>
+  `;
+    // Append the card to the current row
+    card.appendChild(cardBody);
+    row.appendChild(card);
   });
 };
 
