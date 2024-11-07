@@ -27,11 +27,10 @@ const handleClick = function handleClick() {
   resultsContainer.innerHTML = ""; // Clear previous results
 
   results.forEach((result, index) => {
-    // Create a new row every 3 cards
-    if (index % 3 === 0) {
+    // Create a new row every 2 cards
+    if (index % 2 === 0) {
       row = document.createElement("div");
-      row.classList.add("row");
-      row.style.padding = "auto";
+      row.classList.add("row", "g-4", "mb-4", "justify-content-between");
       resultsContainer.appendChild(row);
     }
 
@@ -39,10 +38,11 @@ const handleClick = function handleClick() {
     const card = document.createElement("div");
     card.classList.add(
       "card",
-      "col-sm-4",
+      "col-sm-6",
       "mb-3",
-      "margin-left",
-      "justify-content-between"
+      "h-150",
+      "py-6",
+      "text-center"
     );
 
     const cardBody = document.createElement("div");
