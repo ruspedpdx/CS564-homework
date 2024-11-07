@@ -7,14 +7,150 @@
     <title>05 - Form</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    />
     <script defer src="05-form.js"></script>
   </head>
-  <body>
-    <main>
-      <form>
-        <h1>Exercise 05 - Form</h1>
+  <body style="background-color: #333232">
+    <main class="d-flex flex-column align-items-center mt-5">
+      <form class="bg-light col col-md-4 mx-auto px-4 mt-6">
+        <h1 class="text-center">Exercise 05 - Form</h1>
+        <div class="mb-3">
+          <label for="fullnameText" class="form-label" style="font-weight: bold"
+            >Full Name:</label
+          >
+          <input type="text" class="form-control" id="fullnameText" />
+        </div>
+        <div class="mb-3">
+          <label for="emailInput" class="form-label" style="font-weight: bold"
+            >Email:</label
+          >
+          <input type="email" class="form-control" id="emailInput" />
+        </div>
+        <div class="mb-3">
+          <label for="statusOption" class="form-label" style="font-weight: bold"
+            >Registration Status:</label
+          >
+          <select id="statusOption" class="form-select mb-3">
+            <option selected>Choose an Option</option>
+            <option value="registered">Registered</option>
+            <option value="waitlisted">Waitlisted</option>
+            <option value="auditing">Auditing only</option>
+          </select>
+        </div>
+        <fieldset class="mb-3 border-none">
+          <legend>Have you taken any of the following courses?</legend>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="programmingLanguages"
+            />
+            <label class="form-check-label" for="programmingLanguages">
+              Programming Languages
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="operatingSystems"
+            />
+            <label class="form-check-label" for="operatingSystems">
+              Operating Systems
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="webDevelopment"
+            />
+            <label class="form-check-label" for="webDevelopment">
+              Full Stack Web Development
+            </label>
+          </div>
+        </fieldset>
+        <div class="mb-3">
+          <label for="textArea" class="form-label" style="font-weight: bold"
+            >Anything else?</label
+          >
+          <textarea class="form-control" id="textArea" rows="3"></textarea>
+        </div>
+        <div class="mb-3 d-flex justify-content-between" style="gap: 0.5em">
+          <input
+            type="submit"
+            class="btn btn-primary flex-fill"
+            data-bs-toggle="modal"
+            data-bs-target="#confirmationModal"
+            id="confirmSubmit"
+            value="Submit"
+          />
+          <input
+            type="reset"
+            class="btn btn-secondary flex-fill"
+            value="Reset"
+          />
+        </div>
       </form>
+      <div
+        class="modal fade"
+        id="confirmationModal"
+        tabindex="-1"
+        aria-labelledby="confirmationModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmationModalLabel">
+                Confirm Submission
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                <strong>Full Name:</strong> <span id="modalFullName"></span>
+              </p>
+              <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+              <p>
+                <strong>Registration Status:</strong>
+                <span id="modalStatus"></span>
+              </p>
+              <p>
+                <strong>Courses Taken:</strong> <span id="modalCourses"></span>
+              </p>
+              <p>
+                <strong>Additional Comments:</strong>
+                <span id="modalComments"></span>
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Edit
+              </button>
+              <button type="button" class="btn btn-primary" id="confirmSubmit">
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>
