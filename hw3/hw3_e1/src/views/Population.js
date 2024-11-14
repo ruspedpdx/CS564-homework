@@ -68,7 +68,11 @@ const CountryPopulationChart = ({ name }) => {
   return (
     <main>
       {/* <Navbar /> */}
-      <h1>{name}</h1>
+      <div className="container">
+      <div className="header">
+        <h1 className="title">Populations of South American Countries</h1>
+      </div>
+    </div>
 
       {!isLoaded && <div>Loading...</div>}
       {isLoaded && (

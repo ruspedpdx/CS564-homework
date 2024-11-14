@@ -19,29 +19,34 @@ const Lists = ({ name }) => {
   }, []);
 
   return (
-    <main>
-      {/* <Navbar /> */}
-      <h1>{name}</h1>
+<main>
+  {/* <Navbar /> */}
+  <div className="container">
+      <div className="header">
+        <h1 className="title">Interesting facts about South American Countries</h1>
+      </div>
+    </div>
 
-      {!isLoaded && <div>Loading... </div>}
-      {isLoaded && (
-        <ul>
-          {countries.map((item, index) => (
-            <li key={index} style={{ display: 'flex', alignItems: 'left', marginBottom: '10px' }}>
-              <div>
-                <strong>{item.name}</strong> - Population: {item.population}
-                <br />
-                Official Languages: {item.official_languages.join(', ')}
-                <br />
-                GDP: ${item.gdp_billions} billion
-                <br />
-                <img src={item.flag_png} alt={item.flag_alt}  />
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
+  {!isLoaded && <div>Loading... </div>}
+  {isLoaded && (
+    <ul>
+      {countries.map((item, index) => (
+        <li key={index} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '10px' }}>
+          <div>
+            <strong>{item.name}</strong> - Population: {item.population}
+            <br />
+            Official Languages: {item.official_languages.join(', ')}
+            <br />
+            GDP: ${item.gdp_billions} billion
+            <br />
+            <img src={item.flag_png} alt={item.flag_alt} style={{ maxWidth: '100px', marginTop: '5px' }} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  )}
+</main>
+
   );
 };
 
