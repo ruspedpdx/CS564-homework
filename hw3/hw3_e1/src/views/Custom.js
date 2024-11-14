@@ -3,7 +3,6 @@ import { Chart } from 'chart.js/auto';
 
 const CountryPopulationChart = ({ name }) => {
   const url = 'https://cs464p564-frontend-api.vercel.app/api/countries';
-  const chartRef = useRef(null);
   const pieChartRef = useRef(null);
 
   // State variables
@@ -35,36 +34,24 @@ const CountryPopulationChart = ({ name }) => {
               label: 'GDP in Billions',
               data: gdps,
               backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)',
-                'rgba(153, 102, 255, 0.6)',
-                'rgba(255, 159, 64, 0.6)',
-                'rgba(199, 199, 199, 0.6)',
-				'rgba(64, 172, 225, 0.6)',
-                'rgba(245, 196, 96, 0.6)',
-                'rgba(85, 182, 182, 0.6)',
-                'rgba(163, 112, 245, 0.6)',
-                'rgba(245, 149, 54, 0.6)',
-                'rgba(189, 189, 189, 0.6)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(199, 199, 199, 1)',
-				'rgba(64, 172, 225, 1)',
-                'rgba(245, 196, 96, 1)',
-                'rgba(85, 182, 182, 1)',
-                'rgba(163, 112, 245, 1)',
-                'rgba(245, 149, 54, 1)',
-                'rgba(189, 189, 189, 1)',
-              ],
-              borderWidth: 2,
+                'rgba(169, 104, 54, 0.6)',
+                'rgba(131, 151, 0, 0.6)',
+                'rgba(1, 111, 194, 0.6)',
+                'rgba(103, 178, 151, 0.6)',
+                'rgba(219, 117, 52, 0.6)',
+                'rgba(135, 111, 191, 0.6)',
+                'rgba(197, 224, 163, 0.6)',
+                ],
+                borderColor: [
+                'rgba(169, 104, 54, 1)',
+                'rgba(131, 151, 0, 1)',
+                'rgba(1, 111, 194, 1)',
+                'rgba(103, 178, 151, 1)',
+                'rgba(219, 117, 52, 1)',
+                'rgba(135, 111, 191, 1)',
+                'rgba(197, 224, 163, 1)',
+                ],
+                borderWidth: 2,
             },
           ],
         },
@@ -81,7 +68,11 @@ const CountryPopulationChart = ({ name }) => {
 
   return (
     <main>
-      <h1>{name}</h1>
+  <div className="container">
+      <div className="header">
+        <h1 className="title">GDP by country of South American Countries</h1>
+      </div>
+    </div>
 
       {!isLoaded && <div>Loading...</div>}
       {isLoaded && (
