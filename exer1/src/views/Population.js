@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Chart } from 'chart.js/auto';
+import React, { useEffect, useRef, useState } from "react";
+import { Chart } from "chart.js/auto";
 
-const CountryPopulationChart = ({ name }) => {
-  const url = 'https://cs464p564-frontend-api.vercel.app/api/countries';
+const CountryPopulationChart = ({ title }) => {
+  const url = "https://cs464p564-frontend-api.vercel.app/api/countries";
   const chartRef = useRef(null);
 
   // State variables
@@ -20,21 +20,28 @@ const CountryPopulationChart = ({ name }) => {
       .catch((error) => console.log(error));
   }, [url]);
 
+  // Filter out countries with no population listed
+  const filteredCountries = countries
+    .map((population, index) =>
+      population > 0 ? { name: countries[index], population } : null
+    )
+    .filter((item) => item !== null);
+
   useEffect(() => {
     if (isLoaded) {
-      const countryNames = countries.map((item) => item.name);
-      const populations = countries.map((item) => item.population);
+      const countryNames = filteredCountries.map((item) => item.name);
+      const populations = filteredCountries.map((item) => item.population);
 
       const myChart = new Chart(chartRef.current, {
-        type: 'bar',
+        type: "bar",
         data: {
           labels: countryNames,
           datasets: [
             {
-              label: 'Population',
+              label: "Population",
               data: populations,
-              backgroundColor: 'rgba(17, 17, 175, 0.44)',
-              borderColor: 'rgba(17, 17, 175, 1)',
+              backgroundColor: "rgba(17, 17, 175, 0.44)",
+              borderColor: "rgba(17, 17, 175, 1)",
               borderWidth: 1,
             },
           ],
@@ -46,13 +53,13 @@ const CountryPopulationChart = ({ name }) => {
               beginAtZero: true,
               title: {
                 display: true,
-                text: 'Population',
+                text: "Population",
               },
             },
             x: {
               title: {
                 display: true,
-                text: 'Country',
+                text: "Country",
               },
             },
           },
@@ -69,10 +76,10 @@ const CountryPopulationChart = ({ name }) => {
     <main>
       {/* <Navbar /> */}
       <div className="container">
-      <div className="header">
-        <h1 className="title">Populations of South American Countries</h1>
+        <div className="header">
+          <h1 className="title">Populations of South American Countries</h1>
+        </div>
       </div>
-    </div>
 
       {!isLoaded && <div>Loading...</div>}
       {isLoaded && (
