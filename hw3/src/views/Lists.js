@@ -21,7 +21,7 @@ const Lists = ({ title }) => {
   return (
     <main>
       {/* <Navbar /> */}
-      <div className="container">
+      <div className="d-flex container" style={{ justifyContent: "center" }}>
         <div className="header">
           <h1 className="title">
             Interesting facts about South American Countries
@@ -31,44 +31,54 @@ const Lists = ({ title }) => {
 
       {!isLoaded && <div>Loading... </div>}
       {isLoaded && (
-        <ul>
-          {countries.map((item, index) => (
-            <React.Fragment key={index}>
-              <li
-                className="card mb-4 shadow-sm"
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  marginBottom: "10px",
-                }}
-              >
-                <div className="card-body text-center">
-                  <strong>{item.name}</strong> - Population:{" "}
-                  {item.population ?? "No information"}
-                  <br />
-                  Official Languages: {item.official_languages.join(", ")}
-                  <br />
-                  GDP:{" "}
-                  {item.gdp_billions
-                    ? `$${item.gdp_billions} billion`
-                    : "No information"}
-                  <br />
-                  <img
-                    className="img-fluid"
-                    src={item.flag_png}
-                    alt={item.flag_alt}
-                    style={{
-                      maxWidth: "100%",
-                      objectFit: "contain",
-                      height: "auto",
-                      marginTop: "5px",
-                    }}
-                  />
-                </div>
-              </li>
-            </React.Fragment>
-          ))}
-        </ul>
+        <div className="d-flex container" style={{ justifyContent: "center" }}>
+          <ul>
+            {countries.map((item, index) => (
+              <React.Fragment key={index}>
+                <li
+                  className="card shadow-sm"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <div className="card-body">
+                    <strong>{item.name}</strong>
+                    <hr />
+                    <strong>Population: </strong>{" "}
+                    {item.population ?? "No information"}
+                    <br />
+                    <strong>Official Languages: </strong>
+                    {item.official_languages.join(", ")}
+                    <br />
+                    <strong>GDP: </strong>{" "}
+                    {item.gdp_billions
+                      ? `$${item.gdp_billions} billion`
+                      : "No information"}
+                    <br />
+                    <hr />
+                    <div
+                      className="d-flex"
+                      style={{ justifyContent: "center" }}
+                    >
+                      <img
+                        src={item.flag_png}
+                        alt={item.flag_alt}
+                        style={{
+                          maxWidth: "100%",
+                          objectFit: "contain",
+                          height: "auto",
+                          marginTop: "5px",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </li>
+              </React.Fragment>
+            ))}
+          </ul>
+        </div>
       )}
     </main>
   );

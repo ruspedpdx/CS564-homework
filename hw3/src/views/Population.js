@@ -20,17 +20,10 @@ const CountryPopulationChart = ({ title }) => {
       .catch((error) => console.log(error));
   }, [url]);
 
-  // Filter out countries with no population listed
-  const filteredCountries = countries
-    .map((population, index) =>
-      population > 0 ? { name: countries[index], population } : null
-    )
-    .filter((item) => item !== null);
-
   useEffect(() => {
     if (isLoaded) {
-      const countryNames = filteredCountries.map((item) => item.name);
-      const populations = filteredCountries.map((item) => item.population);
+      const countryNames = countries.map((item) => item.name);
+      const populations = countries.map((item) => item.population);
 
       const myChart = new Chart(chartRef.current, {
         type: "bar",
@@ -75,7 +68,7 @@ const CountryPopulationChart = ({ title }) => {
   return (
     <main>
       {/* <Navbar /> */}
-      <div className="container">
+      <div className="d-flex container" style={{ justifyContent: "center" }}>
         <div className="header">
           <h1 className="title">Populations of South American Countries</h1>
         </div>
