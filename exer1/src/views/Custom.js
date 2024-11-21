@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Chart } from "chart.js/auto";
 
-const CountryGDPChart = ({ title }) => {
+const CountryPopulationChart = ({ title }) => {
   const url = "https://cs464p564-frontend-api.vercel.app/api/countries";
   const pieChartRef = useRef(null);
 
@@ -20,10 +20,15 @@ const CountryGDPChart = ({ title }) => {
       .catch((error) => console.log(error));
   }, [url]);
 
+  // Filter out countries with no gdp listed
+  const filteredCountries = countries
+    .map((gdp, index) => (gdp > 0 ? { name: countries[index], gdp } : null))
+    .filter((item) => item !== null);
+
   useEffect(() => {
     if (isLoaded) {
-      const countryNames = countries.map((item) => item.name);
-      const gdps = countries.map((item) => item.gdp_billions);
+      const countryNames = filteredCountries.map((item) => item.name);
+      const gdps = filteredCountries.map((item) => item.gdp_billions);
 
       const pieChart = new Chart(pieChartRef.current, {
         type: "pie",
@@ -68,7 +73,7 @@ const CountryGDPChart = ({ title }) => {
 
   return (
     <main>
-      <div className="d-flex container" style={{ justifyContent: "center" }}>
+      <div className="container">
         <div className="header">
           <h1 className="title">GDP by country of South American Countries</h1>
         </div>
@@ -84,4 +89,4 @@ const CountryGDPChart = ({ title }) => {
   );
 };
 
-export default CountryGDPChart;
+export default CountryPopulationChart;
